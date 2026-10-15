@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Six professional profiles in data and AI scored on 12 skill axes, including a Data Geoscientist profile. Interactive, in Spanish, English and Arabic.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kevinalexandr19.github.io/data-ai-profiles/">
+<meta property="og:title" content="Data and AI Profiles · Perfiles en Datos e IA">
+<meta property="og:description" content="Where are you? Six profiles on the same 12 skill axes, including the AI Engineer and the Data Geoscientist. ES · EN · AR.">
+<meta property="og:image" content="https://kevinalexandr19.github.io/data-ai-profiles/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data and AI Profiles">
+<meta name="twitter:image" content="https://kevinalexandr19.github.io/data-ai-profiles/og-image.png">
+<title>Data and AI Profiles</title>
+<meta name="author" content="Kevin Alexander Gomez">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+img{max-width:100%}
+/* Layout: one screen, three languages. Title + language switch on top; start column = profiles, credits, references; centre = radar of the selected profile; end column = what each axis measures. */
+:root{
+  --bg:#EFF1EC;        /* pale limestone */
+  --panel:#F8F9F5;
+  --fg:#1C2420;        /* basalt */
+  --muted:#4F5B55;
+  --line:#C6CDC5;
+  --grid:#D6DBD4;
+  --accent:#1B7A5E;    /* malachite */
+  --accent-soft:#D5EAE1;
+  --brass:#9A6A12;     /* chalcopyrite */
+  --brass-soft:#F1E3C4;
+  --g1:#2f6db5;        /* data & software engineering */
+  --g2:#a8476f;        /* communication & domain */
+  --g3:#25724a;        /* science, modeling & AI */
+  --r0:#3d8a56;--r1:#b8800f;--r2:#6c47c4;--r3:#2474a8;--r4:#c9552f;--r5:#8a5320;
+  --geo-line:#8cc097;
+  --f-display:'Literata', Georgia, 'Times New Roman', serif;
+  --f-body:'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  --f-mono:'IBM Plex Mono', 'Courier New', monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111614;--panel:#18201C;--fg:#E4E9E3;--muted:#A3AFA8;--line:#2E3933;--grid:#26302B;
+  --accent:#54C29D;--accent-soft:#163A2E;--brass:#E2B154;--brass-soft:#3A2E14;
+  --g1:#7EAAE6;--g2:#E58DB4;--g3:#6CC79A;
+  --r0:#6CC08A;--r1:#E0B048;--r2:#A88FF2;--r3:#62AEE0;--r4:#F0855E;--r5:#D49C62;
+  --geo-line:#4E8A5C;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111614;--panel:#18201C;--fg:#E4E9E3;--muted:#A3AFA8;--line:#2E3933;--grid:#26302B;
+  --accent:#54C29D;--accent-soft:#163A2E;--brass:#E2B154;--brass-soft:#3A2E14;
+  --g1:#7EAAE6;--g2:#E58DB4;--g3:#6CC79A;
+  --r0:#6CC08A;--r1:#E0B048;--r2:#A88FF2;--r3:#62AEE0;--r4:#F0855E;--r5:#D49C62;
+  --geo-line:#4E8A5C;color-scheme:dark}
+
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.45}
+p,h1,h2,h3,h4{margin:0}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;line-height:1.15}
+
+/* Arabic typography */
+.wrap[lang="ar"]{--f-display:'Noto Naskh Arabic','IBM Plex Sans Arabic','Geeza Pro',Arial,serif;--f-body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,Arial,sans-serif;--f-mono:'IBM Plex Mono','IBM Plex Sans Arabic','Courier New',monospace;font-family:var(--f-body)}
+.wrap[lang="ar"] .list-head b,.wrap[lang="ar"] .how b,.wrap[lang="ar"] .credits .made,.wrap[lang="ar"] .refs b,.wrap[lang="ar"] .signal b,.wrap[lang="ar"] .grp h3{letter-spacing:0!important;text-transform:none!important}
+
+.wrap{--axw:536px;max-width:1600px;margin:0 auto;padding-inline:20px;padding-block:16px 20px;display:grid;grid-template-columns:228px minmax(0,1fr) minmax(0,var(--axw));grid-template-areas:"head head head" "list main axes";grid-template-rows:auto auto;gap:12px 24px}
+.wrap[lang="en"]{--axw:500px}
+.wrap[lang="ar"]{--axw:445px}
+
+/* ===== Header ===== */
+.head{grid-area:head;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:2px solid var(--fg);padding-bottom:10px}
+.head-tx{display:flex;flex-direction:column;gap:4px;min-width:0}
+.head h1{font-size:clamp(28px,2.6vw,38px);font-weight:700;letter-spacing:-.01em}
+.wrap[lang="ar"] .head h1{letter-spacing:0}
+.head h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+.head .lede{font-size:16.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Language switch */
+.lang{flex:none;display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--panel)}
+.lang button{display:inline-flex;align-items:center;gap:7px;border:1px solid transparent;background:none;border-radius:999px;padding:5px 11px 5px 6px;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);line-height:1}
+.lang button:hover{color:var(--fg);border-color:var(--line)}
+.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.lang svg{width:24px;height:16px;border-radius:3px;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.18)}
+.lang .ar-lbl{font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif}
+
+/* ===== Start column ===== */
+.list{grid-area:list;align-self:start;display:flex;flex-direction:column;gap:10px;min-width:0}
+.list-head{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);border-bottom:none;padding:7px 10px;background:var(--panel)}
+.list-head b{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em}
+.list-head span{font-size:12px;line-height:1.3;color:var(--muted)}
+.list ol{list-style:none;margin:-10px 0 0;padding:0;border:1px solid var(--line)}
+.list li+li .pf{border-top:1px solid var(--line)}
+.pf{width:100%;display:grid;grid-template-columns:28px minmax(0,1fr);align-items:stretch;text-align:start;background:none;border:none;padding:0;cursor:pointer;position:relative}
+.pf .no{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);padding:8px 4px;border-inline-end:1px solid var(--line);font-variant-numeric:tabular-nums}
+.pf .tx{display:flex;flex-direction:column;gap:1px;padding:9px 10px;min-width:0}
+.pf .nm{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;line-height:1.2}
+.pf .nm::before{content:"";flex:none;width:11px;height:11px;border-radius:50%;background:var(--rc)}
+.pf:hover .nm{color:var(--accent)}
+.pf[aria-pressed="true"] .tx{background:var(--accent-soft)}
+.pf[aria-pressed="true"]::after{content:"";position:absolute;inset-inline-end:-1px;top:50%;border-inline-end:8px solid var(--accent);border-top:6px solid transparent;border-bottom:6px solid transparent;transform:translateY(-50%)}
+.pf.geo .no{box-shadow:inset 4px 0 0 var(--geo-line)}
+.wrap[dir="rtl"] .pf.geo .no{box-shadow:inset -4px 0 0 var(--geo-line)}
+
+.credits{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:9px 12px;display:flex;flex-direction:column;gap:5px}
+.credits .made{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.credits .made b{color:var(--brass);font-weight:500}
+.credits .who{font-family:'Literata',Georgia,serif;font-weight:600;font-size:15px;line-height:1.25}
+.credits .links{display:flex;gap:14px;flex-wrap:wrap}
+.credits a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--fg);font-weight:600;font-size:13px}
+.credits a:hover{color:var(--accent)}
+.credits svg{width:14px;height:14px;flex:none}
+.refs{display:flex;flex-direction:column;gap:4px;font-size:11px;line-height:1.3;color:var(--muted)}
+.refs ul{margin:0;padding-inline-start:14px;display:flex;flex-direction:column;gap:4px}
+.refs li::marker{color:var(--brass)}
+.refs b{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg)}
+
+/* ===== Centre ===== */
+main{grid-area:main;align-self:stretch;min-height:0;min-width:0;display:flex;flex-direction:column;gap:10px}
+.stage{flex:1 1 auto;min-height:0;position:relative;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px 10px;display:flex;flex-direction:column;gap:4px;align-items:center}
+.stage.geo{border-color:var(--geo-line);box-shadow:inset 0 0 0 1px var(--geo-line)}
+.stage-top{align-self:stretch;display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.prof-head{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:3px}
+.prof-head h2{font-size:clamp(22px,2vw,28px);font-weight:600;display:flex;align-items:center;gap:10px}
+.prof-head h2::before{content:"";flex:none;width:14px;height:14px;border-radius:50%;background:var(--rc)}
+.prof-head p{font-size:13.5px;line-height:1.4;max-width:68ch;min-height:4.2em}
+.how{flex:0 1 290px;min-width:180px;font-size:11.5px;line-height:1.35;color:var(--muted);display:flex;flex-direction:column;gap:3px;border-inline-start:1px solid var(--line);padding-inline-start:12px}
+.how b{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg)}
+.groups{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 10px;align-self:stretch}
+.groups span{display:inline-flex;align-items:center;gap:5px;font-size:11px;white-space:nowrap;font-weight:600;color:var(--gc)}
+.groups span::before{content:"";width:18px;height:9px;border-radius:2px;background:var(--gc)}
+.radar{display:block;flex:1 1 0;min-height:260px;width:100%;height:auto;direction:ltr}
+.radar .ring{fill:none;stroke:var(--grid);stroke-width:1}
+.radar .ring5{fill:none;stroke:var(--line);stroke-width:1.2}
+.radar .spoke{stroke:var(--grid);stroke-width:1}
+.radar .spoke.on{stroke:var(--sel);stroke-width:2.5}
+.radar .area{fill:var(--rc);fill-opacity:.18;stroke:var(--rc);stroke-width:2.5;stroke-linejoin:round;transition:all .35s}
+.radar .dot{fill:var(--rc);transition:all .35s}
+.radar .dot.on{r:7;stroke:var(--panel);stroke-width:2.5}
+.radar .ax{cursor:pointer}
+.radar .ax .hit{fill:transparent}
+.radar .ax .bg{fill:transparent;stroke:none}
+.radar .ax.on .bg{fill:var(--panel);stroke:var(--gc);stroke-width:2}
+.radar .num{font-family:'IBM Plex Mono','Courier New',monospace;font-size:19px;font-weight:600;text-anchor:middle;fill:var(--gc)}
+.radar .lab{font-family:var(--f-body);font-size:17px;font-weight:600;fill:var(--gc)}
+.wrap[lang="ar"] .radar .lab{font-size:16px}
+.radar .lv{font-family:var(--f-mono);font-size:13.5px;font-weight:400;fill:var(--muted)}
+.radar .ax:hover .lab tspan:not(.lv),.radar .ax.on .lab tspan:not(.lv){text-decoration:underline}
+.radar .ax:focus{outline:none}
+.radar .ax:focus-visible .bg{fill:var(--panel);stroke:var(--brass);stroke-width:3}
+.signal{min-height:calc(4.35em + 17px);font-size:13.5px;padding-inline-start:14px;border-inline-start:4px solid var(--brass)}
+.signal b{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);display:block;margin-bottom:2px;font-weight:500}
+
+/* ===== End column: axes ===== */
+.axes{grid-area:axes;align-self:start;display:flex;flex-direction:column;gap:8px;min-width:0}
+.axes-head{display:flex;flex-direction:column;gap:1px}
+.axes-head h2{font-size:21px;font-weight:600}
+.axes-head p{font-size:12px;color:var(--muted)}
+.axes-list{display:flex;flex-direction:column;gap:6px}
+.grp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 8px}
+.grp h3{grid-column:1/-1;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--gc);display:flex;justify-content:space-between;gap:8px;border-bottom:2px solid var(--gc);padding-bottom:3px;margin-bottom:2px}
+.axi{display:grid;grid-template-columns:22px minmax(0,1fr);gap:1px 6px;align-content:start;text-align:start;background:none;border:1px solid transparent;border-radius:7px;padding:4px 6px;cursor:pointer;width:100%;min-width:0;transition:background .2s,border-color .2s}
+.axi:hover{border-color:var(--line)}
+.axi .n{grid-row:span 2;font-family:'IBM Plex Mono','Courier New',monospace;font-size:13.5px;font-weight:600;color:var(--gc);line-height:1.2}
+.axi .t{font-weight:700;font-size:13px;line-height:1.25;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.axi .d{font-size:11.5px;line-height:1.3;color:var(--muted)}
+.axi .lvl{display:inline-flex;align-items:center;flex:none}
+.pips{display:inline-flex;gap:2px}
+.pips i{width:11px;height:5px;border-radius:2px;background:var(--grid)}
+.pips i.f{background:var(--rc)}
+.axi[aria-pressed="true"]{background:var(--panel);border-color:var(--gc);box-shadow:inset 3px 0 0 var(--gc)}
+.wrap[dir="rtl"] .axi[aria-pressed="true"]{box-shadow:inset -3px 0 0 var(--gc)}
+.axi[aria-pressed="true"] .d{color:var(--fg)}
+
+@media (max-width:1180px){
+  .wrap{grid-template-columns:220px minmax(0,1fr);grid-template-areas:"head head" "list main" "list axes";gap:16px 24px}
+  .head .lede{white-space:normal}
+  .stage{flex:none}
+  .radar{flex:none;height:auto;width:100%;max-width:560px}
+}
+@media (max-width:820px){
+  .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "list" "main" "axes";gap:16px;padding-block:14px 48px}
+  .head{flex-direction:column;align-items:stretch}
+  .lang{align-self:flex-start}
+  .list{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:8px;border-bottom:1px solid var(--line);overflow-x:auto}
+  .list-head,.list .credits,.list .refs{display:none}
+  .stage-top{flex-wrap:wrap}
+  .how{border-inline-start:none;padding-inline-start:0;flex-basis:100%}
+  .list ol{display:flex;gap:6px;border:none;margin:0}
+  .list li+li .pf{border-top:none}
+  .pf{display:flex;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:var(--panel)}
+  .pf .no{display:none}
+  .pf .tx{padding:0;background:none!important}
+  .pf[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+  .pf[aria-pressed="true"]::after{display:none}
+  .stage{padding:8px}
+  .end-m{display:flex!important}
+}
+@media (max-width:520px){.grp{grid-template-columns:minmax(0,1fr)}.lang button{padding-inline:6px 9px}}
+.end-m{display:none;flex-direction:column;gap:14px}
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap" lang="es" dir="ltr">
+<header class="head">
+  <div class="head-tx">
+    <h1 id="t-h1">Perfiles profesionales en <em>Datos e IA</em></h1>
+    <p class="lede" id="t-lede"></p>
+  </div>
+  <div class="lang" role="group" id="lang" aria-label="Idioma · Language · اللغة">
+    <button type="button" data-l="es" aria-pressed="true" lang="es" aria-label="Español">
+      <svg viewBox="0 0 750 500" aria-hidden="true"><rect width="750" height="500" fill="#c60b1e"/><rect y="125" width="750" height="250" fill="#ffc400"/></svg>ES</button>
+    <button type="button" data-l="en" aria-pressed="false" lang="en" aria-label="English">
+      <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk-t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><path d="M0,0v30h60v-30z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg>EN</button>
+    <button type="button" data-l="ar" aria-pressed="false" lang="ar" aria-label="العربية">
+      <svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#006C35"/><text x="15" y="9.5" fill="#fff" font-size="4.2" text-anchor="middle" font-family="'Noto Naskh Arabic','IBM Plex Sans Arabic',serif">لا إله إلا الله</text><path d="M7.5 13.6h15.5" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/><path d="M8.6 12.4v2.4" stroke="#fff" stroke-width=".9"/></svg><span class="ar-lbl">عربي</span></button>
+  </div>
+</header>
+
+<nav class="list" id="nav-list">
+  <div class="list-head">
+    <b id="t-list-h"></b>
+    <span id="t-list-s"></span>
+  </div>
+  <ol id="pf-list"></ol>
+  <div class="credits">
+    <p class="made" id="t-made"></p>
+    <p class="who" lang="en" dir="ltr">Kevin Alexander Gomez</p>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/kevin-alexander-gomez/"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5" r="3" fill="currentColor"/><path d="M2 15c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5z" fill="currentColor"/></svg>LinkedIn</a>
+      <a href="https://github.com/kevinalexandr19"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>GitHub</a>
+    </div>
+  </div>
+  <div class="refs" id="refs">
+    <b id="t-refs"></b>
+    <ul id="refs-list"></ul>
+  </div>
+</nav>
+
+<main id="profile">
+  <div class="stage" id="stage">
+    <div class="stage-top">
+      <div class="prof-head" aria-live="polite">
+        <h2 id="p-name"></h2>
+        <p id="p-desc"></p>
+      </div>
+      <div class="how">
+        <b id="t-how-h"></b>
+        <span id="t-how"></span>
+      </div>
+    </div>
+    <svg class="radar" id="radar" viewBox="14 16 532 432" role="group"></svg>
+    <div class="groups" id="legend"></div>
+  </div>
+  <p class="signal" id="p-signal"></p>
+</main>
+
+<aside class="axes" aria-labelledby="t-axes">
+  <div class="axes-head">
+    <h2 id="t-axes"></h2>
+    <p id="t-axes-s"></p>
+  </div>
+  <div class="axes-list" id="axes-list"></div>
+  <div class="end-m" id="end-m"></div>
+</aside>
+</div>
+
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+
+  /* ===== Shared data ===== */
+  const IDS=['data-engineer','ml-engineer','ai-engineer','data-scientist','data-analyst','data-geoscientist'];
+  const COLORS=['var(--r0)','var(--r1)','var(--r2)','var(--r3)','var(--r4)','var(--r5)'];
+  const SCORES=[[3,3,5,5,1,1,2,2,1,1,2,3],[5,5,3,3,1,1,2,1,3,3,5,3],[4,5,3,3,1,2,3,1,3,2,2,5],[2,2,2,3,4,4,4,3,5,5,4,3],[1,1,1,3,5,5,5,5,2,3,1,2],[2,2,3,3,4,3,5,3,4,5,4,2]];
+  const GEO=5;
+  const GCOL=['var(--g1)','var(--g2)','var(--g3)'],RANGES=['1–4','5–8','9–12'];
+  const REF_SPRINGER='<a href="https://link.springer.com/article/10.1007/s12599-025-00954-2">Springer</a>';
+  const REF_WEF='<a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/">WEF</a>';
+
+  /* ===== Strings ===== */
+  const T={
+  es:{
+    title:'Perfiles en Datos e IA',
+    h1:'Perfiles profesionales en <em>Datos e IA</em>',
+    lede:'¿Dónde estás tú? Seis perfiles medidos en los mismos 12 ejes de habilidades, incluidos el AI Engineer y un perfil para geociencias.',
+    nav:'Perfiles profesionales',listH:'Perfiles · 6',listS:'Elige un perfil para ver su radar y lo que pide el mercado.',
+    made:'Hecho con <b>Claude</b> por',refsH:'Referencias',
+    refs:['Gunklach, J. et al. (2025). Job Roles in Data Science. <i>Business &amp; Information Systems Engineering</i>. 16 348 avisos, 9 roles. '+REF_SPRINGER,
+      'World Economic Forum (2025). <i>Future of Jobs Report 2025</i>. '+REF_WEF,'LinkedIn (2026). <i>Jobs on the Rise 2026</i>.',
+      'Avisos de empleo de Data Scientist en exploración mineral (2026).','Basado en la figura «Types of Data Professionals» (2024).'],
+    howH:'Cómo leerlo',how:'Anillos de 1 (básico) a 5 (experto); el color del número indica el dominio. Clic en un número para resaltar su definición. Síntesis cualitativa, no medición directa.',
+    axesH:'Qué mide cada eje',axesS:'Numerados en sentido horario desde arriba; las barras muestran el nivel del perfil elegido.',
+    axesWord:'ejes',axisWord:'Eje',lv:v=>'Nivel '+v,lvOf:v=>'Nivel '+v+' de 5',signalH:'Qué pide el mercado',radarFor:'Radar de habilidades de ',domains:'Dominios de habilidades',
+    groups:['Ingeniería de datos y software','Comunicación y dominio','Ciencia, modelado e IA'],
+    labels:['MLOps / LLMOps','Despliegue','Pipelines','Bases de datos','Visualización','Storytelling','Dominio / negocio','Reportes','Experimentación','Estadística','Modelado ML','LLMs y agentes'],
+    split:{3:['Bases de','datos'],8:['Experimen-','tación']},
+    defs:['Operar modelos en producción: versionado, monitoreo, reentrenamiento y observabilidad de LLMs (latencia, costo, deriva).',
+      'Llevar código y modelos a servicio: APIs, contenedores, nube y CI/CD.',
+      'Mover y transformar datos de forma confiable: ETL/ELT, orquestación y control de calidad.',
+      'Diseñar, consultar y optimizar el almacenamiento: SQL, data warehouses, bases geoespaciales y vectoriales.',
+      'Representar datos con gráficos, mapas y dashboards claros y honestos.',
+      'Construir con los datos una narrativa que lleve a la audiencia a una conclusión y una acción.',
+      'Entender el contexto donde se aplican los datos (mercado, operación o geología) para hacer las preguntas correctas.',
+      'Producir informes periódicos, KPIs y documentación reproducible para quienes toman decisiones.',
+      'Diseñar pruebas y evaluaciones: tests A/B, validación cruzada (incluida la espacial) y evals de LLMs.',
+      'Inferencia, incertidumbre y causalidad: pruebas de hipótesis, estadística bayesiana y geoestadística.',
+      'Seleccionar, entrenar y ajustar modelos supervisados y no supervisados, incluido el deep learning.',
+      'Usar y construir sobre modelos de lenguaje: prompting, RAG, agentes y uso de herramientas.'],
+    roles:[
+      ['Ingeniero/a de datos','Construye y mantiene los pipelines, almacenes y bases de datos (incluidas las vectoriales) de los que dependen todos los demás.','Su trabajo ya alcanza a la IA generativa: prepara documentos, embeddings y bases vectoriales para RAG, de los que depende la calidad de las respuestas.'],
+      ['Ingeniero/a de ML','Entrena, optimiza y sirve modelos propios en producción, con monitoreo y reentrenamiento.','Su demanda se concentra donde hacen falta modelos propios; muchas tareas que antes exigían entrenar hoy se resuelven con la API de un modelo fundacional.'],
+      ['Ingeniero/a de IA','Construye productos sobre LLMs y modelos fundacionales: RAG, agentes, evaluaciones y costos de inferencia.','Figura entre los empleos de mayor crecimiento en los informes de tendencias laborales de 2026, y la ingeniería de IA encabeza las habilidades en alza.'],
+      ['Científico/a de datos','Formula preguntas, diseña experimentos y modela para explicar y predecir; traduce resultados en decisiones.','Su mercado está bifurcado: la estadística, el diseño de experimentos y la inferencia causal lo distinguen de quien solo integra modelos.'],
+      ['Analista de datos','Convierte datos en reportes, dashboards y narrativas para la toma de decisiones, ahora con asistentes de IA.','La exigencia de entrada subió: las vacantes de analista piden hoy habilidades que en 2022 se esperaban de un científico de datos junior.'],
+      ['Geocientífico/a de datos','Integra geología, geoquímica, geofísica y sensores remotos en modelos geoespaciales con incertidumbre cuantificada.','La exploración mineral con IA pide estadística bayesiana, ML geoespacial y modelos 3D; en algunos equipos, geocientíficos y científicos de datos ya co-lideran la exploración.']]
+  },
+  en:{
+    title:'Data and AI Profiles',
+    h1:'Professional profiles in <em>Data and AI</em>',
+    lede:'Where are you? Six profiles scored on the same 12 skill axes, including the AI Engineer and a geoscience profile.',
+    nav:'Professional profiles',listH:'Profiles · 6',listS:'Pick a profile to see its radar and what the market asks for.',
+    made:'Made with <b>Claude</b> by',refsH:'References',
+    refs:['Gunklach, J. et al. (2025). Job Roles in Data Science. <i>Business &amp; Information Systems Engineering</i>. 16,348 job postings, 9 roles. '+REF_SPRINGER,
+      'World Economic Forum (2025). <i>Future of Jobs Report 2025</i>. '+REF_WEF,'LinkedIn (2026). <i>Jobs on the Rise 2026</i>.',
+      'Data Scientist job postings in mineral exploration (2026).','Based on the “Types of Data Professionals” figure (2024).'],
+    howH:'How to read it',how:'Rings run from 1 (basic) to 5 (expert); the number’s colour marks the domain. Click a number to highlight its definition. A qualitative synthesis, not a direct measurement.',
+    axesH:'What each axis measures',axesS:'Numbered clockwise from the top; the bars show the selected profile’s level.',
+    axesWord:'axes',axisWord:'Axis',lv:v=>'Level '+v,lvOf:v=>'Level '+v+' of 5',signalH:'What the market asks for',radarFor:'Skills radar for ',domains:'Skill domains',
+    groups:['Data & software engineering','Communication & domain','Science, modeling & AI'],
+    labels:['MLOps / LLMOps','Deployment','Pipelines','Databases','Data viz','Storytelling','Domain / business','Reporting','Experimentation','Statistics','ML modeling','LLMs & agents'],
+    split:{8:['Experimen-','tation']},
+    defs:['Running models in production: versioning, monitoring, retraining and LLM observability (latency, cost, drift).',
+      'Putting code and models into service: APIs, containers, cloud and CI/CD.',
+      'Moving and transforming data reliably: ETL/ELT, orchestration and quality checks.',
+      'Designing, querying and tuning storage: SQL, data warehouses, geospatial and vector databases.',
+      'Showing data through clear, honest charts, maps and dashboards.',
+      'Building a narrative from the data that leads an audience to a conclusion and an action.',
+      'Understanding the context the data serves (market, operations or geology) to ask the right questions.',
+      'Producing recurring reports, KPIs and reproducible documentation for decision-makers.',
+      'Designing tests and evaluations: A/B tests, cross-validation (spatial included) and LLM evals.',
+      'Inference, uncertainty and causality: hypothesis testing, Bayesian statistics and geostatistics.',
+      'Selecting, training and tuning supervised and unsupervised models, deep learning included.',
+      'Using and building on language models: prompting, RAG, agents and tool use.'],
+    roles:[
+      ['Data Engineer','Builds and runs the pipelines, warehouses and databases (vector stores included) that every other role depends on.','The work now reaches generative AI: preparing documents, embeddings and vector stores for RAG, which determine the quality of the answers.'],
+      ['ML Engineer','Trains, optimises and serves custom models in production, with monitoring and retraining.','Demand concentrates where custom models are needed; many tasks that once required training are now handled by a foundation model’s API.'],
+      ['AI Engineer','Ships products on top of LLMs and foundation models: RAG, agents, evaluations and inference cost.','It ranks among the fastest-growing jobs in 2026 labour-market trend reports, and AI engineering tops the list of rising skills.'],
+      ['Data Scientist','Frames questions, designs experiments and builds models to explain and predict; turns results into decisions.','A bifurcated market: statistics, experimental design and causal inference set it apart from roles that only integrate models.'],
+      ['Data Analyst','Turns data into reports, dashboards and narratives for decision-makers, now with AI assistants.','The entry bar has risen: analyst postings now ask for skills that were expected of a junior data scientist in 2022.'],
+      ['Data Geoscientist','Integrates geology, geochemistry, geophysics and remote sensing into geospatial models with quantified uncertainty.','AI-driven mineral exploration asks for Bayesian statistics, geospatial ML and 3D models; in some teams, geoscientists and data scientists already co-lead exploration.']]
+  },
+  ar:{
+    title:'الملفات المهنية في البيانات والذكاء الاصطناعي',
+    h1:'الملفات المهنية في <em>البيانات والذكاء الاصطناعي</em>',
+    lede:'أين تقف أنت؟ ستة ملفات مهنية مقيَّمة على المحاور الاثني عشر نفسها، من بينها مهندس الذكاء الاصطناعي وملف خاص بعلوم الأرض.',
+    nav:'الملفات المهنية',listH:'الملفات · 6',listS:'اختر ملفًا لعرض مخطط مهاراته وما يطلبه سوق العمل.',
+    made:'صُنع باستخدام <b>Claude</b> بواسطة',refsH:'المراجع',
+    refs:['Gunklach, J. et al. (2025). Job Roles in Data Science. <i>Business &amp; Information Systems Engineering</i>. 16,348 إعلان وظيفة، 9 أدوار. '+REF_SPRINGER,
+      'World Economic Forum (2025). <i>Future of Jobs Report 2025</i>. '+REF_WEF,'LinkedIn (2026). <i>Jobs on the Rise 2026</i>.',
+      'إعلانات وظائف عالِم بيانات في الاستكشاف المعدني (2026).','مستند إلى الشكل «Types of Data Professionals» (2024).'],
+    howH:'كيف تقرؤه',how:'الحلقات من 1 (أساسي) إلى 5 (خبير)، ولون الرقم يدل على المجال. انقر على رقم لإبراز تعريفه. تركيب نوعي للمصادر، لا قياس مباشر.',
+    axesH:'ماذا يقيس كل محور',axesS:'مرقّمة باتجاه عقارب الساعة من الأعلى، وتُظهر الأشرطة مستوى الملف المختار.',
+    axesWord:'المحاور',axisWord:'المحور',lv:v=>'المستوى '+v,lvOf:v=>'المستوى '+v+' من 5',signalH:'ما يطلبه السوق',radarFor:'مخطط مهارات ',domains:'مجالات المهارات',
+    groups:['هندسة البيانات والبرمجيات','التواصل والمجال','العلوم والنمذجة والذكاء الاصطناعي'],
+    labels:['MLOps / LLMOps','النشر','خطوط البيانات','قواعد البيانات','تصوّر البيانات','السرد بالبيانات','المجال / الأعمال','التقارير','التجريب','الإحصاء','نمذجة التعلّم الآلي','LLMs والوكلاء'],
+    split:{10:['نمذجة','التعلّم الآلي']},
+    defs:['تشغيل النماذج في بيئة الإنتاج: إدارة الإصدارات والمراقبة وإعادة التدريب ومتابعة النماذج اللغوية (زمن الاستجابة والتكلفة والانحراف).',
+      'إتاحة الشيفرة والنماذج كخدمات: واجهات برمجية وحاويات وسحابة وCI/CD.',
+      'نقل البيانات وتحويلها بموثوقية: ETL/ELT والتنسيق وضبط الجودة.',
+      'تصميم التخزين والاستعلام عنه وتحسينه: SQL ومستودعات البيانات وقواعد البيانات المكانية والمتجهية.',
+      'عرض البيانات بمخططات وخرائط ولوحات معلومات واضحة وأمينة.',
+      'بناء سردية من البيانات تقود الجمهور إلى استنتاج ثم إلى فعل.',
+      'فهم السياق الذي تخدمه البيانات (السوق أو العمليات أو الجيولوجيا) لطرح الأسئلة الصحيحة.',
+      'إعداد تقارير دورية ومؤشرات أداء وتوثيق قابل لإعادة الإنتاج لصنّاع القرار.',
+      'تصميم الاختبارات والتقييمات: اختبارات A/B والتحقق المتقاطع (ومنه المكاني) وتقييمات النماذج اللغوية.',
+      'الاستدلال وعدم اليقين والسببية: اختبار الفرضيات والإحصاء البايزي والإحصاء الجيولوجي.',
+      'اختيار النماذج الموجَّهة وغير الموجَّهة وتدريبها وضبطها، ومنها التعلّم العميق.',
+      'استخدام النماذج اللغوية والبناء عليها: صياغة الأوامر وRAG والوكلاء واستخدام الأدوات.'],
+    roles:[
+      ['مهندس بيانات','يبني ويشغّل خطوط البيانات والمستودعات وقواعد البيانات (ومنها المتجهية) التي تعتمد عليها بقية الأدوار.','امتدّ عمله إلى الذكاء الاصطناعي التوليدي: تجهيز المستندات والتضمينات وقواعد البيانات المتجهية لأنظمة RAG، وعليها تتوقف جودة الإجابات.'],
+      ['مهندس تعلّم آلي','يدرّب نماذج خاصة ويحسّنها ويشغّلها في بيئة الإنتاج، مع المراقبة وإعادة التدريب.','يتركّز الطلب عليه حيث تلزم نماذج خاصة؛ فكثير من المهام التي كانت تتطلب التدريب تُنجز اليوم عبر واجهة برمجية لنموذج تأسيسي.'],
+      ['مهندس ذكاء اصطناعي','يبني منتجات فوق النماذج اللغوية الكبيرة والنماذج التأسيسية: RAG والوكلاء والتقييمات وتكلفة الاستدلال.','يُعدّ من أسرع الوظائف نموًا في تقارير اتجاهات سوق العمل لعام 2026، وتتصدّر هندسة الذكاء الاصطناعي قائمة المهارات الصاعدة.'],
+      ['عالِم بيانات','يصوغ الأسئلة ويصمّم التجارب ويبني النماذج للتفسير والتنبؤ، ويحوّل النتائج إلى قرارات.','سوقه منقسم: الإحصاء وتصميم التجارب والاستدلال السببي هي ما يميّزه عن الأدوار التي تكتفي بدمج النماذج.'],
+      ['محلّل بيانات','يحوّل البيانات إلى تقارير ولوحات معلومات وسرديات لصنّاع القرار، مستعينًا الآن بمساعدات الذكاء الاصطناعي.','ارتفع سقف الدخول: تطلب إعلانات المحلّلين اليوم مهارات كانت متوقعة من عالِم بيانات مبتدئ في عام 2022.'],
+      ['عالِم بيانات علوم الأرض','يدمج الجيولوجيا والجيوكيمياء والجيوفيزياء والاستشعار عن بُعد في نماذج مكانية مع تقدير كمّي لعدم اليقين.','يتطلب الاستكشاف المعدني المعتمد على الذكاء الاصطناعي إحصاءً بايزيًا وتعلّمًا آليًا مكانيًا ونماذج ثلاثية الأبعاد؛ وفي بعض الفرق يقود علماء الأرض وعلماء البيانات الاستكشاف معًا.']]
+  }};
+
+  const wrap=document.getElementById('wrap'),$=id=>document.getElementById(id);
+  const gOf=i=>Math.floor(i/4);
+  let L='es',cur=0,axis=-1;
+
+  /* ===== Profile list ===== */
+  const list=$('pf-list');
+  const btns=IDS.map((id,i)=>{
+    const li=document.createElement('li');
+    const b=document.createElement('button');b.type='button';b.className='pf'+(i===GEO?' geo':'');b.style.setProperty('--rc',COLORS[i]);
+    b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="no">0'+(i+1)+'</span><span class="tx"><span class="nm"></span></span>';
+    b.addEventListener('click',()=>pick(i,true));
+    li.appendChild(b);list.appendChild(li);return b;
+  });
+
+  /* ===== Radar (static parts) ===== */
+  const svg=$('radar');
+  const N=12,cx=280,cy=232,R=135;
+  const ang=i=>(-90+i*360/N)*Math.PI/180;
+  const pt=(i,v)=>[cx+R*v/5*Math.cos(ang(i)),cy+R*v/5*Math.sin(ang(i))];
+  const f=n=>n.toFixed(1);
+  for(let v=1;v<=5;v++){const p=[];for(let i=0;i<N;i++)p.push(pt(i,v).map(f).join(','));el('polygon',{class:v===5?'ring5':'ring',points:p.join(' ')},svg);}
+  const spokes=[];
+  for(let i=0;i<N;i++){const p=pt(i,5);spokes.push(el('line',{class:'spoke',x1:cx,y1:cy,x2:f(p[0]),y2:f(p[1])},svg));}
+  const area=el('polygon',{class:'area',points:''},svg);
+  const dots=[];for(let i=0;i<N;i++)dots.push(el('circle',{class:'dot',r:4.5,cx:cx,cy:cy},svg));
+  const axLayer=el('g',{},svg);
+  let axG=[],lvT=[],axBtns=[];
+
+  function buildAxes(t){
+    /* radar labels */
+    axLayer.textContent='';axG=[];lvT=[];
+    for(let i=0;i<N;i++){
+      const a=ang(i),c=Math.cos(a),s=Math.sin(a);
+      const g=el('g',{class:'ax',tabindex:'0',role:'button','aria-pressed':'false','aria-label':t.axisWord+' '+(i+1)+': '+t.labels[i]},axLayer);
+      g.style.setProperty('--gc',GCOL[gOf(i)]);
+      const nx=cx+(R+16)*c,ny=cy+(R+16)*s;
+      el('circle',{class:'bg',cx:f(nx),cy:f(ny),r:15},g);
+      const nt=el('text',{class:'num',x:f(nx),y:f(ny+6.5)},g);nt.textContent=i+1;
+      const lines=t.split[i]||[t.labels[i]],nl=lines.length+1,H=nl*19-4;
+      const lx=cx+(R+33)*c,ly=cy+(R+33)*s,b1=ly-H/2+s*H/2+13;
+      const anchor=Math.abs(c)<0.2?'middle':(c>0?'start':'end');
+      const tx=el('text',{class:'lab','text-anchor':anchor},g);
+      lines.forEach((ln,j)=>{const ts=el('tspan',{x:f(lx),y:f(b1+19*j)},tx);ts.textContent=ln;});
+      lvT.push(el('tspan',{class:'lv',x:f(lx),y:f(b1+19*(nl-1))},tx));
+      el('circle',{class:'hit',cx:f((nx+lx)/2),cy:f((ny+ly)/2),r:30},g);
+      g.addEventListener('click',()=>selAxis(i));
+      g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selAxis(i);}});
+      axG.push(g);
+    }
+    /* axis column */
+    const wrapA=$('axes-list');wrapA.textContent='';axBtns=[];
+    t.groups.forEach((name,k)=>{
+      const sec=document.createElement('section');sec.className='grp';sec.style.setProperty('--gc',GCOL[k]);
+      const h=document.createElement('h3');h.innerHTML='<span></span><span></span>';h.firstChild.textContent=name;h.lastChild.textContent=t.axesWord+' '+RANGES[k];sec.appendChild(h);
+      for(let i=4*k;i<4*k+4;i++){
+        const b=document.createElement('button');b.type='button';b.className='axi';b.id='axis-'+(i+1);b.setAttribute('aria-pressed','false');
+        b.innerHTML='<span class="n">'+(i+1)+'</span><span class="t"><span class="tn"></span><span class="lvl"><span class="pips"><i></i><i></i><i></i><i></i><i></i></span></span></span><span class="d"></span>';
+        b.querySelector('.tn').textContent=t.labels[i];b.querySelector('.d').textContent=t.defs[i];
+        b.addEventListener('click',()=>selAxis(i));
+        sec.appendChild(b);axBtns.push(b);
+      }
+      wrapA.appendChild(sec);
+    });
+    /* legend */
+    const lg=$('legend');lg.textContent='';lg.setAttribute('aria-label',t.domains);
+    t.groups.forEach((name,k)=>{const s=document.createElement('span');s.style.setProperty('--gc',GCOL[k]);s.textContent=name;lg.appendChild(s);});
+  }
+
+  function applyLang(l){
+    L=l;const t=T[l];
+    wrap.lang=l;wrap.dir=l==='ar'?'rtl':'ltr';
+    document.title=t.title;
+    $('t-h1').innerHTML=t.h1;$('t-lede').textContent=t.lede;
+    $('nav-list').setAttribute('aria-label',t.nav);
+    $('t-list-h').textContent=t.listH;$('t-list-s').textContent=t.listS;
+    $('t-made').innerHTML=t.made;$('t-refs').textContent=t.refsH;
+    $('refs-list').innerHTML=t.refs.map(r=>'<li>'+r+'</li>').join('');
+    $('t-how-h').textContent=t.howH;$('t-how').textContent=t.how;
+    $('t-axes').textContent=t.axesH;$('t-axes-s').textContent=t.axesS;
+    btns.forEach((b,i)=>b.querySelector('.nm').textContent=t.roles[i][0]);
+    document.querySelectorAll('#lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l?'true':'false'));
+    buildAxes(t);
+    /* phone copies of credits and references */
+    const endM=$('end-m');endM.textContent='';
+    endM.appendChild(document.querySelector('.list .credits').cloneNode(true));
+    const rc=$('refs').cloneNode(true);rc.removeAttribute('id');rc.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));endM.appendChild(rc);
+    render();
+    const keep=axis;axis=-1;if(keep>=0)selAxis(keep);
+    try{localStorage.setItem('profiles-lang',l);}catch(e){}
+  }
+
+  /* ===== State ===== */
+  const stage=$('stage');
+  function render(){
+    const t=T[L],r=t.roles[cur],s=SCORES[cur];
+    document.documentElement.style.setProperty('--rc',COLORS[cur]);
+    $('p-name').textContent=r[0];$('p-desc').textContent=r[1];
+    const sg=$('p-signal');sg.innerHTML='<b></b>';sg.firstChild.textContent=t.signalH;sg.appendChild(document.createTextNode(r[2]));
+    stage.classList.toggle('geo',cur===GEO);
+    area.setAttribute('points',s.map((v,i)=>pt(i,v).map(f).join(',')).join(' '));
+    s.forEach((v,i)=>{const p=pt(i,v);dots[i].setAttribute('cx',f(p[0]));dots[i].setAttribute('cy',f(p[1]));lvT[i].textContent=t.lv(v);
+      axBtns[i].querySelectorAll('.pips i').forEach((p,j)=>p.classList.toggle('f',j<v));
+      const lv=axBtns[i].querySelector('.lvl');lv.title=t.lvOf(v);lv.setAttribute('aria-label',t.lvOf(v));});
+    btns.forEach((b,j)=>b.setAttribute('aria-pressed',j===cur?'true':'false'));
+    svg.setAttribute('aria-label',t.radarFor+r[0]+': '+t.labels.map((l,i)=>(i+1)+' '+l+' '+s[i]).join(', '));
+    stage.style.setProperty('--sel',axis<0?'var(--accent)':GCOL[gOf(axis)]);
+  }
+  function selAxis(i){
+    axis=(axis===i)?-1:i;
+    axG.forEach((g,j)=>{g.classList.toggle('on',j===axis);g.setAttribute('aria-pressed',j===axis?'true':'false');});
+    spokes.forEach((s,j)=>s.classList.toggle('on',j===axis));
+    dots.forEach((d,j)=>d.classList.toggle('on',j===axis));
+    axBtns.forEach((b,j)=>b.setAttribute('aria-pressed',j===axis?'true':'false'));
+    stage.style.setProperty('--sel',axis<0?'var(--accent)':GCOL[gOf(axis)]);
+    if(axis>=0){
+      const b=axBtns[axis],rc=b.getBoundingClientRect();
+      if(rc.top<0||rc.bottom>window.innerHeight)b.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    }
+  }
+  function pick(i,fromUser){
+    cur=i;render();
+    try{history.replaceState(null,'','#'+IDS[i]);}catch(e){}
+    if(fromUser&&matchMedia('(max-width:820px)').matches)btns[i].scrollIntoView({block:'nearest',inline:'center'});
+  }
+  document.addEventListener('keydown',e=>{
+    const t=e.target;if(!t||!t.classList||!t.classList.contains('pf'))return;
+    if(e.key==='ArrowDown'){e.preventDefault();const i=Math.min(cur+1,IDS.length-1);pick(i,true);btns[i].focus();}
+    if(e.key==='ArrowUp'){e.preventDefault();const i=Math.max(cur-1,0);pick(i,true);btns[i].focus();}
+  });
+  document.querySelectorAll('#lang button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.l)));
+
+  /* ===== Start: saved choice, else browser language ===== */
+  let start='es';
+  const q=new URLSearchParams(location.search).get('lang');
+  if(q&&T[q]){start=q;}else try{const s=localStorage.getItem('profiles-lang');if(s&&T[s])start=s;else{const n=(navigator.language||'').slice(0,2).toLowerCase();start=T[n]?n:'en';}}catch(e){const n=(navigator.language||'').slice(0,2).toLowerCase();start=T[n]?n:'en';}
+  const h=IDS.indexOf((location.hash||'').slice(1));cur=h>=0?h:0;
+  applyLang(start);
+  pick(cur,false);
+})();
+</script>
+</body>
+</html>
